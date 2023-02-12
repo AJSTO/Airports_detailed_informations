@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bf405fd-b98a-4a0a-ac5e-6fcb2bae7529" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/fly_analyse.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flights_data_analyse.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Flights_data_analyse.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres_driver_JDBC/postgresql-42.2.27.jre7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +22,19 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/adamstolarczyk/PYSPARK FLIGHTS"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8bf405fd-b98a-4a0a-ac5e-6fcb2bae7529" name="Changes" comment="" />
+      <created>1675786199820</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675786199820</updated>
+    </task>
+    <servers />
+  </component>
 </project>
