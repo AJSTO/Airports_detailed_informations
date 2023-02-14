@@ -85,9 +85,15 @@ def _transform_data(flights_df, airports_data_df):
         'avg_delay_min',
         delay_per_airport['avg(delay_seconds)'] / 60
     )
+    '''
     delay_per_airport = delay_per_airport.withColumn(
         "avg_delay_in_minutes",
         format_number("avg_delay_min", 2)
+    )
+    '''
+    # Instead of function used above, because format_number gives string
+    delay_per_airport = delay_per_airport.withColumnRenamed(
+        'avg_delay_min', 'avg_delay_in_minutes'
     )
     delay_per_airport = delay_per_airport.select(
         'date', 'airport', 'avg_delay_in_minutes'

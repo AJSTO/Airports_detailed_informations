@@ -209,26 +209,41 @@ def _transform_data(
         'avg_eco',
         occupancy_per['avg(occ_eco)'] * 100
     )
+    '''
     occupancy_per = occupancy_per.withColumn(
         "avg_occ_economy_percent",
         format_number("avg_eco", 2)
     )
+    '''
+    # Instead of function used above, because format_number gives string
+    occupancy_per = occupancy_per.withColumnRenamed('avg_eco', 'avg_occ_economy_percent')
+
     occupancy_per = occupancy_per.withColumn(
         'avg_bus',
         occupancy_per['avg(occ_bus)'] * 100
     )
+    '''
     occupancy_per = occupancy_per.withColumn(
         "avg_occ_bussines_percent",
         format_number("avg_bus", 2)
     )
+    '''
+    # Instead of function used above, because format_number gives string
+    occupancy_per = occupancy_per.withColumnRenamed('avg_bus', 'avg_occ_bussines_percent')
+
     occupancy_per = occupancy_per.withColumn(
         'avg_com',
         occupancy_per['avg(occ_com)'] * 100
     )
+    '''
     occupancy_per = occupancy_per.withColumn(
         "avg_occ_comfort_percent",
         format_number("avg_com", 2)
     )
+    '''
+    # Instead of function used above, because format_number gives string
+    occupancy_per = occupancy_per.withColumnRenamed('avg_com', 'avg_occ_comfort_percent')
+
     # Final table
     occupancy_per = occupancy_per.select(
         'date', 'airport', 'avg_occ_economy_percent', 'avg_occ_bussines_percent', 'avg_occ_comfort_percent'

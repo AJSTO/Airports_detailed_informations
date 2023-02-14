@@ -157,10 +157,14 @@ def _transform_data(
     # Counting average occupancy per day per airport
     avg_occupancy = avg_occupancy.groupBy('airport', 'date') \
         .mean()
+    '''
     avg_occupancy = avg_occupancy.withColumn(
         "avg_occupancy_percent",
         format_number("avg(occupancy_%)", 2)
     )
+    '''
+    # Instead of function used above, because format_number gives string
+    avg_occupancy = avg_occupancy.withColumnRenamed('avg(occupancy_%)', 'avg_occupancy_percent')
     # Select columns to final aggregate
     avg_occupancy = avg_occupancy.select('date', 'airport', 'avg_occupancy_percent')
 
