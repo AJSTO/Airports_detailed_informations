@@ -1,106 +1,130 @@
 ## 👨‍💻 Built with
 <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue" /> <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"/> <img src="https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white" /> <img src="https://img.shields.io/badge/Pandas-2C2D72?style=for-the-badge&logo=pandas&logoColor=white" /> <img src="https://img.shields.io/badge/Numpy-777BB4?style=for-the-badge&logo=numpy&logoColor=white" /> 
 <img src="https://miro.medium.com/max/1400/1*5C4UQznqEiN3D6Xutlgwlg.png" width="100" height="27,5" />
-<img src="https://cdn-images-1.medium.com/max/1000/1*-7Ro7fO__wwWz0iL9tucHQ.png" width="100" height="27,5" />
 <img src="https://www.devagroup.pl/blog/wp-content/uploads/2022/10/logo-Google-Looker-Studio.png" width="100" height="27,5" />
 <img src="https://www.scitylana.com/wp-content/uploads/2019/01/Hello-BigQuery.png" width="100" height="27,5" />
+<img src="https://lh6.googleusercontent.com/2jkuIwxrds9QFLoBN5Rh1-uLgt5ukWTmGjXj_8TluJTdb9jYZ2su50b0vM_zU7cqn3y7xf5MRNjrrXUVQtZ-xetqMVgGrQBivhurxhTyM0ElzaSANRvEftTcW7edTVmb7UhJZ0Tj" width="100" height="27,5" />
 
 ##  Descripction about project
 
 ### ℹ️Project info
 
-This project is created to catch information about reported covid infections in Poland. 
+In this project I used data which was found on website:
 
-Getting information from government site: [gov.pl - Zakażenia z powodu COVID-19](https://dane.gov.pl/pl/dataset/2582/resource/41901/table).
+[PostgresPro - Demonstration Database](https://postgrespro.com/community/demodb)
 
-The aim of the project was to use pyspark to process data from a csv file.
-Before using pyspark, data analysis was done using jupyter notebook.
-For analysing data was created container with jupyter notebook.
-Pyspark was launched locally. 
-Pyspark was used to get the sum of infections reported on a given day for the voivodship and the poviat.
-The obtained data were loaded into a table in google bigquery and then visualized using Looker studio.
+Project was based on using Pyspark on Google Dataproc to process a data and Bigquery to keep database of flights and created aggregates.
+Before using Pyspark there was done data analyse in jupyter notebook.
+The aim of the project was to catch informations about airports. So there were created aggregates for each airport.
+Created aggregates for each airport per day:
+- Sum of made bookings per airport per day;
+- Average departure delay per airport per day;
+- Average flight occupancy per airport per day;
+- Average flight occupancy depending on fare conditions per airport per day;
+- Number of passengers served per airport per day;
+- Number of flights per day per airport;
+
+The obtained data were loaded into a table in google bigquery and then visualized using Looker Studio.
 In addition, the Pyspark application received tests that were written in pytest
 
-## 🗒️Table of COVID aggregates:
-![IMG SCHEMA](https://i.ibb.co/jHQb0xN/Zrzut-ekranu-2023-02-19-o-23-33-31.png)
-![IMG TABLE](https://i.ibb.co/0htdfYv/Zrzut-ekranu-2023-02-19-o-23-32-13.png)
+## 🛬Database infromation:
+Link to database:
 
-## 🌲 Project tree
-```bash
-.
-├── Dockerfile # docker file to create container image
-├── requirements.txt # requirements to create image
-├── README.md
-├── analyse_COVID_infections.ipynb # jupyter notebook with analyse
-└── app
-    ├── bigquery_connection
-    │   ├── credentials.json # your credential key from bigquery should be here
-    │   └── spark-3.1-bigquery-0.28.0-preview.jar # you need to put jar file here
-    ├── config.json # informations about project
-    ├── conftest.py
-    ├── data
-    │   └── covid_infections.csv
-    ├── jobs
-    │   ├── __init__.py
-    │   └── covid_aggregates.py # pyspark job to count aggregates
-    ├── main.py
-    └── tests
-        ├── pytest.ini
-        └── test_aggregation_infections_per_day.py # tests for pyspark application
+[demo-big-en.zip](https://edu.postgrespro.com/demo-big-en.zip) - (232 MB) — flight data for one year (DB size is about 2.5 GB).
 
-```
-## 🔑 Setup 
+Firstly i created locally PostgreSQL database. For this reason i used created Dockerfile which is saved in this repo. Before building image and run container you should download sql file from link above and put it in building context.
 
-To run properly this project you should set variables in files: 
-### ./app/config.json:
-{
-  "app_name": "YOUR_APP_NAME",
-  "source_data_path": "./data/covid_infections.csv", # download CSV file from link in Project info and paste it here
-  "source_credentials": "bigquery_connection/credentials.json", # you should put your json key here and name it 'credentials.json'
-  "bigquery_table_path": "BIGQUERY-ID-PROJECT.DATASET_NAME.TABLE_NAME",
-  "bigquery_table_path_short": "DATASET_NAME.TABLE_NAME",
-  "bigquery_project": "BIGQUERY-ID-PROJECT"
-}
-
-## ⚙️ Run analyse container:
+#### ⚙️ Run PostgreSQL container locally⚙️
 
 Build image:
 ```bash
-  $ docker build -t covid_analyse .
+  $ docker build -t flights_db .
 ```
 
 Run container:
 ```bash
-  $ docker run --name covid_analyse -p 8888:8888 covid_analyse
+  $ docker run -d -p 5432:5432 --name flights_db_container flights_db
+```
+
+But the aim of the project was using Pyspark on Dataproc, so I migrated database into Bigquery. 
+
+More informations about: [Connecting PostgreSQL to BigQuery: 2 Easy Methods](https://hevodata.com/blog/postgresql-to-bigquery-data-migration/)
+
+## Schema of the database:
+
+![IMG SCHEMA](https://repo.postgrespro.ru/doc//std/10.23.1/en/html/demodb-bookings-schema.svg)
+
+#### [Schema description](https://postgrespro.com/docs/postgrespro/10/apjs03.html)
+
+## 🌲 Project tree
+```bash
+.
+├── Dockerfile # docker file to create container image of PosgreSQL database
+├── .gitignore
+├── README.md
+├── Flights_data_analyse.ipynb # jupyter notebook with analyse
+├── postgresql-42.5.1.jar # jar file in case you want to work with Pyspark and PostgreSQL locally
+└── app
+    ├── jobs # pyspark job folder
+    │   ├── __init__.py
+    │   ├── airports_job.py # pyspark job
+    │   └── aggregates 
+    │       ├── __init__.py
+    │       └── functions.py # aggregation functions module
+    ├── main.py
+    ├── conftest.py
+    └── tests
+        ├── pytest.ini
+        └── test_aggregates.py # tests for pyspark application
+
 ```
 
 ##  📊Data visualisation
-**To start notebook you should type in your browser:**
+All analyse is located in:
+
+### Flights_data_analyse.ipynb
+![X](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/connection.png)
+![X](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/delay.png)
+![X](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/passengers.png)
+![X](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/seats.png)
+
+##  📚Created aggregates
+
+- Sum of made bookings per airport per day;
+- Average departure delay per airport per day;
+- Average flight occupancy per airport per day;
+- Average flight occupancy depending on fare conditions per airport per day;
+- Number of passengers served per airport per day;
+- Number of flights per day per airport;
+
+![Table of aggregates](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/aggregates_table.png)
+
+## ⚙️ Run Pyspark via Dataproc
+- Clone the project
+Informations about: [Submit a job via Dataproc](https://cloud.google.com/dataproc/docs/guides/submit-job)
+
+Command to run Pyspark via Cloudshell:
 ```bash
-  localhost:8888
+  $  gcloud dataproc jobs submit pyspark --jars gs://spark-lib/bigquery/spark-3.1-bigquery-0.28.0-preview.jar --cluster YOUR_CLUSTER_NAME --region REGION_NAME gs://PATH/TO/YOUR/FILE/MAIN.PY
+```
+Command to run Pyspark via Dataproc terminal:
+```bash
+  $  spark-submit --jars gs://spark-lib/bigquery/spark-3.1-bigquery-0.28.0-preview.jar home/PATH/TO/YOUR/FILE/MAIN.PY
 ```
 
-Next choose a file 🗒️analyse_COVID_infections.ipynb and run all cells to see data analyse.
+## 🔎 Looker Studio
+Link to generated report in looker :
 
-Examples of charts:
-- Infections per day;
-- Total infections per month;
-- Total infections per age category;
-- Infections divided by age categories;
-
-
+[Airports detailed informations](https://lookerstudio.google.com/reporting/4563da3e-7863-41ed-aaa2-63478c5d5a53)
+![IMG LOOKER](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/gif-looker.gif)
+_______________________________________________________________________
 ## ⚙️ Run Pyspark locally
+If you want to run Pyspark locally:
 - Clone the project
+- Download bigquery jar and put it in project directory
+- Replace jar localisation to your localisation of jar file
 - Go to the app folder in project directory:
 Type in CLI:
 ```bash
-  $  spark-submit --jars bigquery_connection/spark-3.1-bigquery-0.28.0-preview.jar --files config.json main.py --job covid_aggregates
+  $  spark-submit --jars path/to/file/spark-3.1-bigquery-0.28.0-preview.jar --files main.py --job airports_job
 ```
-## ⚙️ Run Pyspark via Dataproc
-[Submit a job via Dataproc](https://cloud.google.com/dataproc/docs/guides/submit-job)
-
-## 🔎 Looker Studio
-Link to generated report in looker for Covid epidemic in Poland:
-
-[Covid empidemic in Poland - years 2021-2022](https://lookerstudio.google.com/reporting/2be2f844-a75d-40b8-bf1f-cc44913e3a87)
-![IMG LOOKER](https://i.postimg.cc/52F9rkD5/Zrzut-ekranu-2023-03-9-o-17-31-55.png)
