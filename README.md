@@ -34,7 +34,7 @@ Link to database:
 
 Firstly i created locally PostgreSQL database. For this reason i used created Dockerfile which is saved in this repo. Before building image and run container you should download sql file from link above and put it in building context.
 
-#### ⚙️ Run PostgreSQL container locally⚙️
+#### ⚙️ Run PostgreSQL container locally:
 
 Build image:
 ```bash
