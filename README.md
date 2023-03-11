@@ -80,9 +80,9 @@ More informations about: [Connecting PostgreSQL to BigQuery: 2 Easy Methods](htt
 ```
 
 ##  📊Data visualisation
-All analyse is located in:
+All analyse is located in: *Flights_data_analyse.ipynb*
 
-### Flights_data_analyse.ipynb
+### Exemplary graphs:
 ![X](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/connection.png)
 ![X](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/delay.png)
 ![X](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/passengers.png)
