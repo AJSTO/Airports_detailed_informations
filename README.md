@@ -25,7 +25,13 @@ Created aggregates for each airport per day:
 - Number of flights per day per airport;
 
 The obtained data were loaded into a table in google bigquery and then visualized using Looker Studio.
-In addition, the Pyspark application received tests that were written in pytest
+In addition, the Pyspark application received tests that were written in pytest.
+
+## 🔎 Looker Studio
+Link to generated report in looker :
+
+[Airports detailed informations](https://lookerstudio.google.com/reporting/4563da3e-7863-41ed-aaa2-63478c5d5a53)
+![IMG LOOKER](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/gif-looker.gif)
 
 ## 🛬Database infromation:
 Link to database:
@@ -112,11 +118,6 @@ Command to run Pyspark via Dataproc terminal:
   $  spark-submit --jars gs://spark-lib/bigquery/spark-3.1-bigquery-0.28.0-preview.jar home/PATH/TO/YOUR/FILE/MAIN.PY
 ```
 
-## 🔎 Looker Studio
-Link to generated report in looker :
-
-[Airports detailed informations](https://lookerstudio.google.com/reporting/4563da3e-7863-41ed-aaa2-63478c5d5a53)
-![IMG LOOKER](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/gif-looker.gif)
 _______________________________________________________________________
 ## ⚙️ Run Pyspark locally
 If you want to run Pyspark locally:
