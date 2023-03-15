@@ -1,0 +1,7 @@
+flights_database.txt
+analyse_COVID_infections.ipynb
+.idea
+.ipynb_checkpoints
+.ipynb_checkpoints/Flights_data_analyse-checkpoint.ipynb
+.ipynb_checkpoints/analyse_COVID_infections-checkpoint.ipynb
+app/postgres_driver_JDBC/.ipynb_checkpoints
