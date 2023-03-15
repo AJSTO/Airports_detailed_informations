@@ -31,7 +31,7 @@ In addition, the Pyspark application received tests that were written in pytest.
 Link to generated report in looker :
 
 [Airports detailed informations](https://lookerstudio.google.com/reporting/4563da3e-7863-41ed-aaa2-63478c5d5a53)
-![IMG LOOKER](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/gif-looker.gif)
+![IMG LOOKER](https://github.com/AJSTO/Airports_detailed_informations/blob/master/img/gif-looker.gif)
 
 ## 🛬Database infromation:
 Link to database:
@@ -89,10 +89,10 @@ More informations about: [Connecting PostgreSQL to BigQuery: 2 Easy Methods](htt
 All analyse is located in: *Flights_data_analyse.ipynb*
 
 ### Exemplary graphs:
-![X](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/connection.png)
-![X](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/delay.png)
-![X](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/passengers.png)
-![X](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/seats.png)
+![X](https://github.com/AJSTO/Airports_detailed_informations/blob/master/img/connection.png)
+![X](https://github.com/AJSTO/Airports_detailed_informations/blob/master/img/delay.png)
+![X](https://github.com/AJSTO/Airports_detailed_informations/blob/master/img/passengers.png)
+![X](https://github.com/AJSTO/Airports_detailed_informations/blob/master/img/seats.png)
 
 ##  📚Created aggregates
 
@@ -103,7 +103,7 @@ All analyse is located in: *Flights_data_analyse.ipynb*
 - Number of passengers served per airport per day;
 - Number of flights per day per airport;
 
-![Table of aggregates](https://github.com/AJSTO/Airports_detailed_informations/blob/final_version_10.03/img/aggregates_table.png)
+![Table of aggregates](https://github.com/AJSTO/Airports_detailed_informations/blob/master/img/aggregates_table.png)
 
 ## ⚙️ Run Pyspark via Dataproc
 - Clone the project
