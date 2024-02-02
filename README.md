@@ -30,8 +30,8 @@ In addition, the Pyspark application received tests that were written in pytest.
 ## 🔎 Looker Studio
 Link to generated report in looker :
 
-[Airports detailed informations](https://lookerstudio.google.com/reporting/4563da3e-7863-41ed-aaa2-63478c5d5a53)
-![IMG LOOKER](https://github.com/AJSTO/Airports_detailed_informations/blob/master/img/gif-looker.gif)
+[Airports detailed informations](https://lookerstudio.google.com/u/0/reporting/1b26879f-90d8-4323-afeb-8dce2cb83e28/page/63lmD)
+![IMG LOOKER](https://github.com/AJSTO/Airports_detailed_informations/blob/master/img/aviation_traffic_analysis.gif)
 
 ## 🛬Database infromation:
 Link to database:
